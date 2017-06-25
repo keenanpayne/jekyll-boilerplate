@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+{% include global/header.html %}
+
+  {% include layout/site-header.html %}
+
+  <main>
+    {% for section in page.sections %}
+      {% include components/{{ section.name }}.html %}
+    {% endfor %}
+
+    {{ content }}
+  </main>
+
+{% include layout/site-footer.html %}

@@ -1,0 +1,21 @@
+<header class="siteHeader" role="main" container>
+  <div grid="center">
+    <h1 class="logo" column="4">
+      <a href="/index.html" title="Home">{{ site.name }}</a>
+    </h1>
+
+    <nav class="siteNavigation" role="navigation" column="8">
+      <ul>
+        {% assign navigation_pages = site.html_pages | sort: 'navigation_weight' %}
+
+        {% for p in navigation_pages %}
+          {% if p.navigation_weight %}
+            {% if p.navigation_weight != 0 %} <!-- Ignore homepage link -->
+              <li {% if p.url == page.url %}class="-is-active"{% endif %}><a href="{{ p.url }}">{{ p.title }}</a></li>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>
